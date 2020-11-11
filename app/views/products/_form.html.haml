@@ -1,0 +1,40 @@
+- if @product.present? and @product.errors.present?
+  = @product.errors.full_messages
+.padding-to-bottom{:style => "padding-top:10px;padding-bottom:10px;"}
+  = form_for @product do |f|
+    .panel_body
+      %fieldset
+        %legend Basic
+        .horizontal_form.form_content
+          .form_group.cf.mbot_20
+            %label.field_label Title:
+            .field
+              = f.text_field :name, :class => 'textfield'
+            .note
+          .form_group.cf.mbot_20
+            %label.field_label Sku code:
+            .field
+              = f.text_field :sku_code, :class => 'textfield'
+            .note
+          .form_group.cf.mbot_20
+            %label.field_label Price:
+            .field
+              = f.text_field :price, :class => 'textfield'
+            .note
+          .form_group.cf.mbot_20
+            %label.field_label Item Count:
+            .field
+              = f.text_field :item_count, :class => 'textfield'
+            .note
+          .form_group.cf.mbot_20
+            %label.field_label Low Item threshold:
+            .field
+              = f.text_field :low_item_threshold, :class => 'textfield'
+            .note
+          .form_group.cf.mbot_20
+            %label.field_label Ware house:
+            .field
+              = f.select :ware_house_id, options_from_collection_for_select(WareHouse.all, :id, :name, :selected => @product.ware_house_id), {:prompt => 'Select Ware House'}, :class => 'chosen_select'
+            .note
+          .form_group.cf.mbot_20
+            = f.submit "Submit", :class => "btn btn_skyblue btn_small" 

@@ -1,0 +1,36 @@
+%header
+  .brand
+    %a.logo{:href => root_path}
+      %img{:alt => "", :src => "/assets/new_logo.png", :style => "max-width: 82% !important;"}
+  - if false 
+    .top_menu.right
+      - if user_signed_in?
+        .left.admin_info
+          %span.admin_name.left Allow Cod
+          - project = ProjectSetting.first rescue nil
+          = check_box_tag :allow_cod, '1', (project.present? and project.allow_cod), :style => 'margin-top:10px;margin-right:12px;', :class => 'allow_cod'
+          .spacer{:style => 'margin-right:15px;'}
+        .left.admin_info
+          %span.admin_image.left
+            %img{:src => "/assets/admin/img_user.png", :style => 'max-width: 100% !important;'}/
+          %span.admin_name.left= current_user.email
+        %a.left.mtop_10.logout{:href => destroy_user_session_path}
+          %i.fa.fa-power-off.mright_5
+          Logout
+      - else
+        %a.left.mtop_10.logout{:href => "javascript:void(0);"}
+          %i.fa.fa-power-off.mright_5
+          Login
+%aside.sidebar
+  .left_menu.mCustomScrollbar
+    %ul#accordion.accordion
+      %li
+        %a{:href => ware_houses_path}
+          %i.fa.fa-usd
+          %span Ware House
+          
+      %li
+        %a{:href => products_path}
+          %i.fa.fa-gift
+          %span Products
+      

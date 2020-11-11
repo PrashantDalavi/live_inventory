@@ -1,0 +1,28 @@
+= javascript_include_tag 'https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js'
+%section.main_content
+  %section.wrapper
+    .button_pane.mbot_10.cf
+      %a.btn.btn_green.right.mright_10{:href => new_ware_house_path}
+        %i.fa.fa-plus
+        Add Ware House
+        
+    / = render :partial => 'products/filters'
+    %section.panel
+      .panel_heading All Ware Houses
+      .panel_body
+        %table.table.table_border.table_stripped.product_table
+          %thead
+            %tr
+              %th Wh Code
+              %th Name
+              %th Pincode
+              %th Max Capacity
+              
+              
+          %tbody
+            - @ware_houses.each do |warehouse|
+              %tr                
+                %td= link_to warehouse.wh_code, edit_ware_house_path(warehouse)
+                %td= warehouse.name
+                %td= warehouse.pincode
+                %td= warehouse.max_capacity

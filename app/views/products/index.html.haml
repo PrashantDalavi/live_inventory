@@ -1,0 +1,30 @@
+= javascript_include_tag 'https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js'
+%section.main_content
+  %section.wrapper
+    .button_pane.mbot_10.cf
+      %a.btn.btn_green.right.mright_10{:href => new_product_path}
+        %i.fa.fa-plus
+        Add Product
+        
+    / = render :partial => 'products/filters'
+    %section.panel
+      .panel_heading All Products #{@products_length}
+      .panel_body
+        %table.table.table_border.table_stripped.product_table
+          %thead
+            %tr
+              %th Sku Code
+              %th Name
+              %th Price
+              %th Count
+              %th Ware House
+              
+          %tbody
+            - @products.each do |product|
+              %tr                
+                %td= link_to product.sku_code, edit_product_path(product)
+                %td= product.name
+                %td= product.price
+                %td= product.item_count
+                %td= product.ware_house.name rescue ''
+                

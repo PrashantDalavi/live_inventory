@@ -1,0 +1,10 @@
+%section.main_content
+  %section.wrapper
+    .button_pane.cf.mbot_10
+      %a.btn.btn_grey.right{:href => products_path}
+        %i.fa.fa-long-arrow-left
+        Back
+    %section.panel
+      .panel_heading
+        New
+      = render :partial => 'form'

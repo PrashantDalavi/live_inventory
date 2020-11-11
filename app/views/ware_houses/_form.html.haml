@@ -1,0 +1,30 @@
+- if @ware_house.present? and @ware_house.errors.present?
+  = @ware_house.errors.full_messages
+.padding-to-bottom{:style => "padding-top:10px;padding-bottom:10px;"}
+  = form_for @ware_house do |f|
+    .panel_body
+      %fieldset
+        %legend Basic
+        .horizontal_form.form_content
+          .form_group.cf.mbot_20
+            %label.field_label Name:
+            .field
+              = f.text_field :name, :class => 'textfield'
+            .note
+          .form_group.cf.mbot_20
+            %label.field_label Wh code:
+            .field
+              = f.text_field :wh_code, :class => 'textfield'
+            .note
+          .form_group.cf.mbot_20
+            %label.field_label Pincode:
+            .field
+              = f.text_field :pincode, :class => 'textfield'
+            .note
+          .form_group.cf.mbot_20
+            %label.field_label Max Capacity:
+            .field
+              = f.text_field :max_capacity, :class => 'textfield'
+            .note
+          .form_group.cf.mbot_20
+            = f.submit "Submit", :class => "btn btn_skyblue btn_small" 
