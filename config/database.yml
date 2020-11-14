@@ -12,7 +12,6 @@ production:
   encoding: utf8
   database: live_inventory_live
   pool: 5
-  host: database-1.czyk1hh1dhtj.ap-south-1.rds.amazonaws.com
   username: root
   password: risingnow1436
   socket: /var/run/mysqld/mysqld.sock
