@@ -15,38 +15,6 @@
   .message {color: red;font-size: 11px;}
   .note {color: red;}
   
-
-:javascript
-  $(document).ready(function(){
-    $(document).on('change', 'input[type="file"]', function(){
-      var data = $(this);
-      if($(this).closest('.field').children().hasClass('product_image')){
-        if(this.files && this.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            data.closest('.field').find('img').attr('src', e.target.result); 
-          }
-          reader.readAsDataURL(this.files[0]);
-        }
-      }
-      else{
-        if(this.files && this.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            data.parent().parent().before('<div class="product_image"><img src="'+e.target.result+'"></img></div>'); 
-          }
-          reader.readAsDataURL(this.files[0]);
-        }
-      }
-    })
-    $(document).on('change', '.allow_cod', function(){
-      a = $(this).is(":checked")
-      console.log(a)
-      $.getScript('/change_cod?q='+a)
-      $.notify('Updating Cod, Please Wait...')
-    })
-  })
-  
 :javascript
   $(function(){
     $(".uniform").uniform();

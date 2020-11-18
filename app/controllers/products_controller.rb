@@ -36,6 +36,27 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def import
+    if params[:file].present?
+      if File.extname(params[:file].original_filename) == '.xls'
+        @errors = Product.import(params[:file])
+        if @errors.blank?
+          session[:pnotification] = "Products imported."
+          redirect_to products_path
+        else
+          @products = Product.order('created_at DESC') 
+          render :action => 'bulk_upload'
+        end
+      else
+        session[:pnotification] = "Invalid File extension.Please upload '.xls' file."
+        redirect_to bulk_upload_path
+      end
+    else
+      session[:pnotification] = "Please upload file."
+      redirect_to bulk_upload_path
+    end
+  end
+
   private
   
   def params_product

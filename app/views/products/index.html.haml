@@ -2,6 +2,9 @@
 %section.main_content
   %section.wrapper
     .button_pane.mbot_10.cf
+      %a.btn.btn_green.right.mright_10{:href => bulk_upload_path}
+        %i.fa.fa-plus
+        Bulk Uploads
       %a.btn.btn_green.right.mright_10{:href => new_product_path}
         %i.fa.fa-plus
         Add Product
@@ -17,6 +20,7 @@
               %th Name
               %th Price
               %th Count
+              %th Threshold
               %th Ware House
               
           %tbody
@@ -25,6 +29,11 @@
                 %td= link_to product.sku_code, edit_product_path(product)
                 %td= product.name
                 %td= product.price
-                %td= product.item_count
+                - if product.item_count < product.low_item_threshold
+                  %td.backred= product.item_count
+                - else 
+                  %td= product.item_count
+                %td= product.low_item_threshold
                 %td= product.ware_house.name rescue ''
+
                 

@@ -302,6 +302,8 @@ header { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); background: #3c8dbc; positio
 .form_content .upload_image { margin: 10px 0; }
 .form_content .delete_image div.checker { margin-left: 10px; }
 
+.backred{background-color: #F73309 !important;}
+
 /**main_content css ends**/
 
 /*# sourceMappingURL=main.css.map */
